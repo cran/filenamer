@@ -1,8 +1,8 @@
 Package: filenamer
 Type: Package
 Title: Easy Management of File Names
-Version: 0.2
-Date: 2014-12-07
+Version: 0.2.1
+Date: 2016-04-03
 Author: David J. H. Shih
 Maintainer: David J. H. Shih <djh.shih@gmail.com>
 Description: Create descriptive file names with ease. New file names are
@@ -12,8 +12,10 @@ Description: Create descriptive file names with ease. New file names are
 URL: https://bitbucket.org/djhshih/filenamer
 BugReports: https://bitbucket.org/djhshih/filenamer/issues
 License: GPL (>= 3)
+Depends: methods
 Suggests: io, testthat
-Packaged: 2014-12-10 19:34:46 UTC; davids
+RoxygenNote: 5.0.1
 NeedsCompilation: no
+Packaged: 2016-04-04 00:11:27 UTC; davids
 Repository: CRAN
-Date/Publication: 2014-12-10 23:15:50
+Date/Publication: 2016-04-04 08:37:07

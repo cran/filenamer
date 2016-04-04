@@ -18,6 +18,7 @@
 #'
 #' @docType package
 #' @name filename
+#' @importFrom methods is
 NULL
 
 #' Create a filename.
