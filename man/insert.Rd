@@ -2,8 +2,8 @@
 % Please edit documentation in R/insert.R
 \name{insert}
 \alias{insert}
-\alias{insert.character}
 \alias{insert.filename}
+\alias{insert.character}
 \title{Insert tag or extension into a file name}
 \usage{
 insert(x, ...)
@@ -66,4 +66,3 @@ j <- insert(g, tag="qc", tag.pos=2)
 print(as.character(j))
 
 }
-

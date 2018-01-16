@@ -25,4 +25,3 @@ print(set_ftime(x, "144530"))
 print(set_ftime(x, "20110505T101500"))
 
 }
-

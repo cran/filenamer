@@ -22,4 +22,3 @@ x <- "path/data.txt.gz"
 print(trim_ext(x))
 
 }
-

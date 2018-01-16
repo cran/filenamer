@@ -16,4 +16,3 @@ a \code{logical} value
 This function returns \code{TRUE} if its argument is a \code{filename}
 and \code{FALSE} otherwise.
 }
-

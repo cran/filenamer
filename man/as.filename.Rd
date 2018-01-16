@@ -2,8 +2,8 @@
 % Please edit documentation in R/filename.R
 \name{as.filename}
 \alias{as.filename}
-\alias{as.filename.character}
 \alias{as.filename.filename}
+\alias{as.filename.character}
 \title{Coerce to a filename}
 \usage{
 as.filename(x, ...)
@@ -30,4 +30,3 @@ fn <- as.filename("data_raw_2011-01-01.txt")
 str(fn)
 
 }
-

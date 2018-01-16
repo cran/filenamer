@@ -34,6 +34,7 @@ set_fpath.character <- function(x, path) {
 #' 
 #' @param x     a \code{character} or a \code{filename}
 #' @param ext   new file extension
+#' @param all   replace the entire extension
 #' @return modified object of the original type
 #' @export
 #' 
@@ -41,21 +42,26 @@ set_fpath.character <- function(x, path) {
 #' x <- "data_norm_2011-01-03.txt"
 #' print(set_fext(x, "csv"))
 #'
-set_fext <- function(x, ext) UseMethod("set_fext");
+set_fext <- function(x, ext, all) UseMethod("set_fext");
 
 #' @export
-set_fext.filename <- function(x, ext) {
+set_fext.filename <- function(x, ext, all=FALSE) {
 	if (length(ext) == 1) {
 		# extension is not already split, so split it
 		ext <- strsplit(ext, .get_ext_char(), fixed=TRUE)[[1]];
 	}
-	x$ext <- ext;
+	if (all) {
+		x$ext <- ext;
+	} else {
+		# replace only the last extension
+		x$ext <- c(x$ext[-length(x$ext)], ext);
+	}
 	x
 }
 
 #' @export
-set_fext.character <- function(x, ext) {
-	as.character(set_fext.filename(as.filename(x), ext))
+set_fext.character <- function(x, ext, all=FALSE) {
+	as.character(set_fext.filename(as.filename(x), ext, all))
 }
 
 #' Set date stamp in a file name

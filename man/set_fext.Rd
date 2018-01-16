@@ -4,12 +4,14 @@
 \alias{set_fext}
 \title{Set file extension}
 \usage{
-set_fext(x, ext)
+set_fext(x, ext, all)
 }
 \arguments{
 \item{x}{a \code{character} or a \code{filename}}
 
 \item{ext}{new file extension}
+
+\item{all}{replace the entire extension}
 }
 \value{
 modified object of the original type
@@ -22,4 +24,3 @@ x <- "data_norm_2011-01-03.txt"
 print(set_fext(x, "csv"))
 
 }
-

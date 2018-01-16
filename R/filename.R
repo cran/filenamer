@@ -201,7 +201,10 @@ as.filename.character <- function(
 
 	if (length(last) > 1) {
 		# all remaining elements of `last` are extensions
-		fn$ext <- last[2:length(last)];
+		ext <- last[2:length(last)];
+		if (ext != "") {
+			fn$ext <- ext;
+		}
 	}
 
 	fn
@@ -236,11 +239,13 @@ as.character.filename <- function(
 
 	if (simplify) {
 		# do not append date/time stamp
-		# further, remove parent directory if it is a date/time stamp
-		last <- x$path[length(x$path)];
-		if (.grepl_date(last) || .grepl_datetime(last)) {
-			# remove parent directory
-			x$path <- x$path[-length(x$path)];
+		if (length(x$path) > 0) {
+			# further, remove parent directory if it is a date/time stamp
+			last <- x$path[length(x$path)];
+			if (.grepl_date(last) || .grepl_datetime(last)) {
+				# remove parent directory
+				x$path <- x$path[-length(x$path)];
+			}
 		}
 	} else {
 		y <- .append_datetime(y, x$date, x$time);

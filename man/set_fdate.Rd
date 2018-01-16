@@ -22,4 +22,3 @@ x <- "data_norm_2011-01-03.txt"
 print(set_fdate(x, "2011-01-05"))
 
 }
-

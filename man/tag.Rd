@@ -27,4 +27,3 @@ g <- tag(f, "qc")
 print(g)
 
 }
-

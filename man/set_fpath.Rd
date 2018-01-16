@@ -22,4 +22,3 @@ x <- "path/data_norm.txt"
 print(set_fpath(x, "new_path"))
 
 }
-

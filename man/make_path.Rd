@@ -2,8 +2,8 @@
 % Please edit documentation in R/make_path.R
 \name{make_path}
 \alias{make_path}
-\alias{make_path.character}
 \alias{make_path.filename}
+\alias{make_path.character}
 \title{Create directory structure for a file path}
 \usage{
 make_path(x, ...)
@@ -32,4 +32,3 @@ make_path(fn)
 }
 
 }
-

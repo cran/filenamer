@@ -4,6 +4,7 @@
 \name{filename}
 \alias{filename}
 \alias{filename-package}
+\alias{filename}
 \title{Utilities for managing file names.}
 \usage{
 filename(x, path = NULL, tag = NULL, ext = NULL, date = NULL,
@@ -83,4 +84,3 @@ fn3 <- filename(fn)
 print(as.character(fn3))
 
 }
-
