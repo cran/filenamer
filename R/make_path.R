@@ -9,7 +9,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' fn <- as.filename("path/to/file.txt")
+#' # CRAN policy forbids package example to write to current directory,
+#' # even inside \dontrun because the user may copy-and-paste and 
+#' # polute his/her current directory;
+#' # in real-world setting, the `tempdir` path prefix is unnecessary
+#' x <- file.path(tempdir(), "path/to/file.txt")
+#'
+#' fn <- as.filename(x)
 #' make_path(fn)
 #' }
 #'

@@ -202,7 +202,8 @@ as.filename.character <- function(
 	if (length(last) > 1) {
 		# all remaining elements of `last` are extensions
 		ext <- last[2:length(last)];
-		if (ext != "") {
+		# do not assign ext that is simply ""
+		if (length(ext) > 0 || ext != "") {
 			fn$ext <- ext;
 		}
 	}
