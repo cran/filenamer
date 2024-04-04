@@ -1,6 +1,6 @@
 #' Insert tag or extension and coerce to character
 #'
-#' This fucntion inserts a tag or extension into a file name and returns
+#' This function inserts a tag or extension into a file name and returns
 #' a \code{charcter} vector.
 #'
 #' @param x    a \code{filename} or \code{character}

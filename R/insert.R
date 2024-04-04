@@ -6,7 +6,7 @@
 #' By default, tags are inserted at the ultimate position and extensions
 #' at the penultimate position, if possible.
 #' (That is, the final file extension will not change, unless the insertion
-#' position is specified otherwise or the orginal file name had no extension.)
+#' position is specified otherwise or the original file name had no extension.)
 #' If \code{replace} is \code{TRUE}, the tag at the indicated position is 
 #' replaced by the new tag instead.
 #' 
