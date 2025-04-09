@@ -27,7 +27,9 @@ make_path <- function(x, ...) UseMethod("make_path");
 #' @export
 make_path.filename <- function(x, showWarnings=FALSE, recursive=TRUE, ...) {
 	path <- paste(x$path, collapse=.Platform$file.sep);
-	dir.create(path, showWarnings=showWarnings, recursive=recursive, ...);
+	if (path != "") {
+		dir.create(path, showWarnings=showWarnings, recursive=recursive, ...);
+	}
 }
 
 #' @rdname make_path

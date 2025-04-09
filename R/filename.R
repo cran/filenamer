@@ -108,6 +108,26 @@ as.filename.filename <- function(x, ...) {
 	return(x);
 }
 
+scrub <- function(x, pattern, replacement="", ...) {
+	gsub(pattern, replacement, x, ...)
+}
+
+.sanitize <- function(x) {
+	# convert to lower case
+	# remove special characters
+	# remove parentheses
+	# replace multiple whitespaces with a single dash
+	scrub(
+		scrub(
+			scrub(
+				tolower(x), "[?%*:|\"'<>;=&#$@!~^`]"
+			),
+			"\\[|\\]|\\(|\\)|\\{|\\}"
+		),
+		"\\s+", "-"
+	)
+}
+
 #' @rdname as.filename
 #' @param tag.char  character to delimit tags, defaults to \code{'_'}
 #' @export
@@ -195,6 +215,9 @@ as.filename.character <- function(
 #' @param x         a \code{filename} object
 #' @param tag.char  character to delimit tags, defaults to \code{'_'}
 #' @param simplify  if \code{TRUE}, all timestamps are omitted
+#' @param sanitize  if \code{TRUE}, file name is sanitized by removing
+#'                  problematic characters, replacing whitespace, and
+#'                  converting to lowercase
 #' @param ...       unused arguments
 #' @return a \code{character} vector
 #' @export
@@ -205,7 +228,7 @@ as.filename.character <- function(
 #' print(as.character(fn))
 #'
 as.character.filename <- function(
-  x, tag.char=NULL, simplify=FALSE, ...
+  x, tag.char=NULL, simplify=FALSE, sanitize=TRUE, ...
 ) {
 	tag.char <- .get_tag_char(tag.char);
 	ext.char <- .get_ext_char();
@@ -215,14 +238,24 @@ as.character.filename <- function(
 	# remove empty elements
 	y <- y[y != ""];
 
+	# sanitize the components and path before appending datetime
+	if (sanitize) {
+		path <- .sanitize(x$path);
+		ext <- .sanitize(x$ext);
+		y <- .sanitize(y);
+	} else {
+		path <- x$path;
+		ext <- x$ext;
+	}
+
 	if (simplify) {
 		# do not append date/time stamp
-		if (length(x$path) > 0) {
+		if (length(path) > 0) {
 			# further, remove parent directory if it is a date/time stamp
-			last <- x$path[length(x$path)];
+			last <- path[length(path)];
 			if (.grepl_date(last) || .grepl_datetime(last)) {
 				# remove parent directory
-				x$path <- x$path[-length(x$path)];
+				path <- path[-length(path)];
 			}
 		}
 	} else {
@@ -231,7 +264,7 @@ as.character.filename <- function(
 
 	# concatentate stem, tags, extensions, and path
 	fname <- paste(y, collapse=tag.char);
-	fname <- paste(c(fname, x$ext), collapse=ext.char);
-	paste(c(x$path, fname), collapse=.Platform$file.sep)
+	fname <- paste(c(fname, ext), collapse=ext.char);
+	paste(c(path, fname), collapse=.Platform$file.sep)
 }
 

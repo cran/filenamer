@@ -43,3 +43,10 @@ test_that("character converted to filename and back remains the same", {
 	x2 <- "2001-09-30/car_red_20010930T123459.tsv.gz";
 	expect_that(as.character(as.filename(x2)), equals(x2));
 });
+
+test_that("special characters are removed", {
+	x <- "file`~!@#$%^&*()[]{}|;'\"<>?name";
+	expect_that(as.character(as.filename(x)), equals("filename"));
+	expect_that(as.character(as.filename(x), sanitize=FALSE), equals(x));
+});
+

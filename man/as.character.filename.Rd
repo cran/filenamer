@@ -4,7 +4,7 @@
 \alias{as.character.filename}
 \title{Coerce a character to a filename}
 \usage{
-\method{as.character}{filename}(x, tag.char = NULL, simplify = FALSE, ...)
+\method{as.character}{filename}(x, tag.char = NULL, simplify = FALSE, sanitize = TRUE, ...)
 }
 \arguments{
 \item{x}{a \code{filename} object}
@@ -12,6 +12,10 @@
 \item{tag.char}{character to delimit tags, defaults to \code{'_'}}
 
 \item{simplify}{if \code{TRUE}, all timestamps are omitted}
+
+\item{sanitize}{if \code{TRUE}, file name is sanitized by removing
+problematic characters, replacing whitespace, and
+converting to lowercase}
 
 \item{...}{unused arguments}
 }
